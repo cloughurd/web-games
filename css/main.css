@@ -228,6 +228,27 @@
       background: linear-gradient(180deg, #fff 0%, #eef2ff 100%);
     }
 
+    .card-phonics {
+      border-color: #f59e0b;
+    }
+    .card-phonics:hover {
+      background: linear-gradient(180deg, #fff 0%, #fffbeb 100%);
+    }
+
+    .card-caterpillar {
+      border-color: #22c55e;
+    }
+    .card-caterpillar:hover {
+      background: linear-gradient(180deg, #fff 0%, #f0fdf4 100%);
+    }
+
+    .card-sight {
+      border-color: #6366f1;
+    }
+    .card-sight:hover {
+      background: linear-gradient(180deg, #fff 0%, #eef2ff 100%);
+    }
+
     .card-icon {
       font-size: 4rem;
       filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
@@ -280,6 +301,18 @@
 
     .btn-play-connect {
       background: linear-gradient(45deg, #6366f1, #ec4899);
+    }
+
+    .btn-play-phonics {
+      background: linear-gradient(45deg, #f59e0b, #f97316);
+    }
+
+    .btn-play-caterpillar {
+      background: linear-gradient(45deg, #22c55e, #10b981);
+    }
+
+    .btn-play-sight {
+      background: linear-gradient(45deg, #6366f1, #38bdf8);
     }
 
     /* Common Game Header & Controls */

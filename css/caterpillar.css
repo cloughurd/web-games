@@ -1,0 +1,181 @@
+/* =========================================
+   GAME 7: SPELLING CATERPILLAR
+   ========================================= */
+#caterpillar-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 50%, #f0fdf4 0%, #bbf7d0 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 16px;
+  gap: 16px;
+}
+
+.caterpillar-card {
+  background: white;
+  border-radius: 28px;
+  padding: 16px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 25px rgba(22, 163, 74, 0.15);
+  border: 4px solid #86efac;
+  max-width: 460px;
+  width: 100%;
+}
+
+.caterpillar-item-emoji {
+  font-size: 4.5rem;
+  line-height: 1;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+  animation: itemBob 2s infinite ease-in-out;
+}
+
+@keyframes itemBob {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.caterpillar-word-prompt {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: #15803d;
+}
+
+/* Caterpillar Track */
+.caterpillar-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 10px 0;
+  position: relative;
+  min-height: 100px;
+}
+
+.caterpillar-head {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #86efac 0%, #22c55e 100%);
+  border: 4px solid #16a34a;
+  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  user-select: none;
+  animation: headWiggle 1.8s infinite ease-in-out;
+  transition: transform 0.4s ease;
+}
+
+@keyframes headWiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.caterpillar-antenna {
+  position: absolute;
+  top: -14px;
+  display: flex;
+  gap: 20px;
+  font-size: 1.2rem;
+}
+
+.caterpillar-face {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.caterpillar-segment {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: white;
+  border: 3px dashed #86efac;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: #94a3b8;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.caterpillar-segment.active-seg {
+  border-color: #22c55e;
+  background: #f0fdf4;
+  color: #16a34a;
+  transform: scale(1.12);
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.4);
+  animation: pulseSeg 1.4s infinite ease-in-out alternate;
+}
+
+@keyframes pulseSeg {
+  0% { transform: scale(1.08); }
+  100% { transform: scale(1.18); }
+}
+
+.caterpillar-segment.filled-seg {
+  border: 3px solid #16a34a;
+  color: white;
+  transform: scale(1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  animation: segPopIn 0.35s ease-out;
+}
+
+@keyframes segPopIn {
+  0% { transform: scale(0.6); }
+  60% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+/* Butterfly transformation */
+.butterfly-fly {
+  font-size: 5rem;
+  animation: butterflyFloat 1.2s forwards ease-out;
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes butterflyFloat {
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  50% { transform: translateY(-40px) scale(1.3); opacity: 1; }
+  100% { transform: translateY(-90px) scale(1.5); opacity: 0; }
+}
+
+/* On-screen letter keys keyboard hint */
+.caterpillar-keypad {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 480px;
+}
+
+.cat-key-btn {
+  background: white;
+  border: 2px solid #bbf7d0;
+  border-radius: 16px;
+  width: 48px;
+  height: 48px;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: #15803d;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.cat-key-btn:hover {
+  transform: translateY(-3px) scale(1.08);
+  background: #dcfce7;
+  border-color: #22c55e;
+}

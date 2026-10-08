@@ -24,6 +24,15 @@ Playable on any modern computer, iPad, or tablet with zero setup or build tools 
    - Turn-based multiplayer on the same keyboard.
    - Letters control column drops, with letters dynamically rotating after each move.
    - Dynamic player-turn background shading (sunny yellow ↔ coral red) makes turns instantly clear at a glance.
+6. **🦁 Animal Phonics**
+   - Find the starting letter for friendly animals (🐶 Dog, 🦁 Lion, 🐻 Bear, 🐸 Frog, etc.).
+   - Spoken audio prompt + on-screen letter buttons and keyboard input.
+7. **🐛 Spelling Caterpillar**
+   - Spell simple 3-letter words (CAT, DOG, SUN, PIG, BUS, BUG, etc.) to grow the caterpillar.
+   - Watch the caterpillar transform into a flying butterfly upon completion!
+8. **👀 Sight Words**
+   - Listen to the word spoken aloud and click the matching card with the mouse.
+   - Designed to practice mouse coordination, listening, and early word recognition.
 
 ---
 

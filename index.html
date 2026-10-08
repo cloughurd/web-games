@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="css/suds.css">
   <link rel="stylesheet" href="css/quest.css">
   <link rel="stylesheet" href="css/connect.css">
+  <link rel="stylesheet" href="css/phonics.css">
+  <link rel="stylesheet" href="css/caterpillar.css">
+  <link rel="stylesheet" href="css/sight.css">
 </head>
 <body>
 
@@ -78,6 +81,30 @@
           <h2 class="card-name">4 in a Row</h2>
           <p class="card-desc">Two-player fun! Type the letter above a column to drop your piece and connect four in a line!</p>
           <button class="btn-play btn-play-connect">Play 4 in a Row</button>
+        </div>
+
+        <!-- Card 6: Animal Phonics -->
+        <div class="game-card card-phonics" id="select-phonics">
+          <div class="card-icon">🦁</div>
+          <h2 class="card-name">Animal Phonics</h2>
+          <p class="card-desc">Find the starting letter for cute animals and items! Type the key or tap to match.</p>
+          <button class="btn-play btn-play-phonics">Play Phonics</button>
+        </div>
+
+        <!-- Card 7: Spelling Caterpillar -->
+        <div class="game-card card-caterpillar" id="select-caterpillar">
+          <div class="card-icon">🐛</div>
+          <h2 class="card-name">Spelling Caterpillar</h2>
+          <p class="card-desc">Spell simple 3-letter words to feed the caterpillar and watch it turn into a butterfly!</p>
+          <button class="btn-play btn-play-caterpillar">Play Spelling</button>
+        </div>
+
+        <!-- Card 8: Sight Words -->
+        <div class="game-card card-sight" id="select-sight">
+          <div class="card-icon">👀</div>
+          <h2 class="card-name">Sight Words</h2>
+          <p class="card-desc">Listen to the word spoken out loud, then click the matching card with your mouse!</p>
+          <button class="btn-play btn-play-sight">Play Sight Words</button>
         </div>
       </div>
     </section>
@@ -240,6 +267,67 @@
       </div>
     </section>
 
+    <!-- GAME 6: ANIMAL PHONICS VIEWPORT -->
+    <section class="game-viewport" id="phonics-game">
+      <div class="game-top-bar">
+        <button class="btn-back" id="back-from-phonics">← Menu</button>
+        <div class="game-options">
+          <button class="pill-btn" id="phonics-speak-btn">🔊 Listen Again</button>
+          <button class="pill-btn" id="phonics-next-btn">Next Animal ➔</button>
+        </div>
+      </div>
+      <div id="phonics-stage">
+        <div class="phonics-card">
+          <div class="phonics-emoji" id="phonics-emoji">🐶</div>
+          <div class="phonics-word-display">
+            <div class="phonics-slot" id="phonics-slot">?</div>
+            <span id="phonics-rest-word">OG</span>
+          </div>
+        </div>
+        <div class="phonics-options" id="phonics-options-row"></div>
+        <div class="stage-hint">⌨️ Press the starting letter on your keyboard or tap a letter!</div>
+      </div>
+    </section>
+
+    <!-- GAME 7: SPELLING CATERPILLAR VIEWPORT -->
+    <section class="game-viewport" id="caterpillar-game">
+      <div class="game-top-bar">
+        <button class="btn-back" id="back-from-caterpillar">← Menu</button>
+        <div class="game-options">
+          <button class="pill-btn" id="cat-speak-btn">🔊 Hear Word</button>
+          <button class="pill-btn" id="cat-next-btn">Next Word ➔</button>
+        </div>
+      </div>
+      <div id="caterpillar-stage">
+        <div class="caterpillar-card">
+          <div class="caterpillar-item-emoji" id="cat-item-emoji">🐱</div>
+          <div class="caterpillar-word-prompt" id="cat-prompt-text">Spell: CAT</div>
+        </div>
+        <div class="caterpillar-track" id="cat-track"></div>
+        <div class="caterpillar-keypad" id="cat-keypad"></div>
+        <div class="stage-hint">⌨️ Type each letter in order to grow the caterpillar!</div>
+      </div>
+    </section>
+
+    <!-- GAME 8: SIGHT WORDS VIEWPORT -->
+    <section class="game-viewport" id="sight-game">
+      <div class="game-top-bar">
+        <button class="btn-back" id="back-from-sight">← Menu</button>
+        <div class="game-options">
+          <button class="pill-btn" id="sight-speak-btn">🔊 Listen Again</button>
+          <button class="pill-btn" id="sight-next-btn">Next Word ➔</button>
+        </div>
+      </div>
+      <div id="sight-stage">
+        <div class="sight-speaker-banner">
+          <button class="sight-speaker-btn" id="sight-repeat-btn" title="Click to hear word again">🔊</button>
+          <div class="sight-prompt-title">Listen and click the matching word! 🖱️</div>
+        </div>
+        <div class="sight-grid" id="sight-grid"></div>
+        <div class="stage-hint">🖱️ Move your mouse and click the word you heard!</div>
+      </div>
+    </section>
+
     <!-- Universal Celebration Banner -->
     <div class="feedback-banner" id="feedback-banner">Awesome! ⭐</div>
   </main>
@@ -251,6 +339,9 @@
   <script src="js/games/suds.js"></script>
   <script src="js/games/quest.js"></script>
   <script src="js/games/connect.js"></script>
+  <script src="js/games/phonics.js"></script>
+  <script src="js/games/caterpillar.js"></script>
+  <script src="js/games/sight.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
