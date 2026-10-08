@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kids Fun Learning Arcade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/bubbles.css">
+  <link rel="stylesheet" href="css/math.css">
+  <link rel="stylesheet" href="css/suds.css">
+  <link rel="stylesheet" href="css/quest.css">
+  <link rel="stylesheet" href="css/connect.css">
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header>
+    <div class="brand" id="brand-home" title="Go to Home Menu">
+      <span>🎈</span> Kids Arcade
+    </div>
+    <div class="stats-bar">
+      <div class="star-badge" id="star-counter" title="Stars Collected">
+        <span>⭐</span> <span id="star-count">0</span>
+      </div>
+      <button class="btn-sound-mode" id="audio-toggle" title="Sound Mode: Effects Only (Click to cycle)">
+        <span id="audio-icon">🎵</span> <span id="audio-label">FX Only</span>
+      </button>
+      <button class="btn-icon" id="fullscreen-toggle" title="Toggle Fullscreen">⛶</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- MENU SCREEN -->
+    <section id="menu-screen">
+      <h1 class="menu-title">What would you like to play?</h1>
+      <p class="menu-subtitle">Pick a game to start learning with fun!</p>
+
+      <div class="game-cards">
+        <!-- Card 1: Letter & Number Bubbles -->
+        <div class="game-card card-bubbles" id="select-bubbles">
+          <div class="card-icon">🫧</div>
+          <h2 class="card-name">Bubble Pop</h2>
+          <p class="card-desc">Pop falling letters and numbers before they hit the ground by pressing matching keys or tapping!</p>
+          <button class="btn-play btn-play-bubbles">Play Bubbles</button>
+        </div>
+
+        <!-- Card 2: Math Stars -->
+        <div class="game-card card-math" id="select-math">
+          <div class="card-icon">🔢</div>
+          <h2 class="card-name">Number Match</h2>
+          <p class="card-desc">Add up the colorful items and press the matching number key (0 - 9)!</p>
+          <button class="btn-play btn-play-math">Play Numbers</button>
+        </div>
+
+        <!-- Card 3: Soap Scrub -->
+        <div class="game-card card-suds" id="select-suds">
+          <div class="card-icon">🧼</div>
+          <h2 class="card-name">Soap Scrub</h2>
+          <p class="card-desc">Wash away soapy suds by typing matching letters or numbers to reveal the hidden cartoon picture!</p>
+          <button class="btn-play btn-play-suds">Play Scrub</button>
+        </div>
+
+        <!-- Card 4: Castle Quest -->
+        <div class="game-card card-map" id="select-map">
+          <div class="card-icon">🏰</div>
+          <h2 class="card-name">Castle Quest</h2>
+          <p class="card-desc">Hop square-by-square across the map to reach the royal castle by typing adjacent letters and numbers!</p>
+          <button class="btn-play btn-play-map">Play Quest</button>
+        </div>
+
+        <!-- Card 5: 4 in a Row -->
+        <div class="game-card card-connect" id="select-connect">
+          <div class="card-icon">🔴</div>
+          <h2 class="card-name">4 in a Row</h2>
+          <p class="card-desc">Two-player fun! Type the letter above a column to drop your piece and connect four in a line!</p>
+          <button class="btn-play btn-play-connect">Play 4 in a Row</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAME 1: LETTER & NUMBER BUBBLES VIEWPORT -->
+    <section class="game-viewport" id="bubbles-game">
+      <div class="game-top-bar">
+        <button class="btn-back" id="back-from-bubbles">← Menu</button>
+        <div class="game-options">
+          <div class="toggle-pills" title="Choose what appears in bubbles">
+            <button class="pill-btn active" id="toggle-upper" title="Uppercase Letters (A-Z)">ABC</button>
+            <button class="pill-btn active" id="toggle-lower" title="Lowercase Letters (a-z)">abc</button>
+            <button class="pill-btn" id="toggle-numbers" title="Numbers (0-9)">123</button>
+          </div>
+          <button class="pill-btn" id="speed-toggle">Speed: Normal</button>
+        </div>
+      </div>
+      <div id="bubble-stage">
+        <div class="stage-hint">⌨️ Press the matching key on your keyboard or click the bubble!</div>
+      </div>
+    </section>
+
+    <!-- GAME 2: NUMBER MATH VIEWPORT -->
+    <section class="game-viewport" id="math-game">
+      <div class="game-top-bar">
+        <button class="btn-back" id="back-from-math">← Menu</button>
+        <div class="game-options">
+          <span style="font-weight:700; color:#64748b; font-size:0.9rem;">Addition (Sum ≤ 10)</span>
+        </div>
+      </div>
+      <div id="math-stage">
+        <!-- Visual counting helper items -->
+        <div class="visual-aids" id="math-visuals">
+          <div class="aid-group" id="aid-group-a"></div>
+          <div style="font-size:1.5rem; color:#f59e0b;">+</div>
+          <div class="aid-group" id="aid-group-b"></div>
+        </div>
+
+        <!-- Big Equation -->
+        <div class="equation-container">
+          <div class="math-num" id="math-num1">2</div>
+          <div class="math-op">+</div>
+          <div class="math-num" id="math-num2">3</div>
+          <div class="math-op">=</div>
+          <div class="math-target" id="math-target">?</div>
+        </div>
+
+        <!-- Touch/Click Keypad (supports both physical keyboard and on-screen clicks) -->
+        <div class="keypad">
+          <button class="key-btn" data-key="0">0</button>
+          <button class="key-btn" data-key="1">1</button>
+          <button class="key-btn" data-key="2">2</button>
+          <button class="key-btn" data-key="3">3</button>
+          <button class="key-btn" data-key="4">4</button>
+          <button class="key-btn" data-key="5">5</button>
+          <button class="key-btn" data-key="6">6</button>
+          <button class="key-btn" data-key="7">7</button>
+          <button class="key-btn" data-key="8">8</button>
+          <button class="key-btn" data-key="9">9</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAME 3: SOAP SCRUB VIEWPORT -->
+    <section class="game-viewport" id="suds-game">
+      <div class="game-top-bar">
+        <button class="btn-back" id="back-from-suds">← Menu</button>
+        <div class="game-options">
+          <div class="toggle-pills" title="Choose character types">
+            <button class="pill-btn active" id="suds-toggle-upper" title="Uppercase (A-Z)">ABC</button>
+            <button class="pill-btn active" id="suds-toggle-lower" title="Lowercase (a-z)">abc</button>
+            <button class="pill-btn" id="suds-toggle-numbers" title="Numbers (0-9)">123</button>
+          </div>
+          <button class="pill-btn" id="suds-custom-btn" title="Use a family or pet photo">📷 My Photo</button>
+          <input type="file" id="suds-file-input" accept="image/*" style="display:none">
+          <button class="pill-btn" id="suds-next-btn">Next Picture ➔</button>
+        </div>
+      </div>
+      <div id="suds-stage">
+        <div class="suds-info-bar">
+          <span id="suds-picture-title" style="font-family:var(--font-display); font-size:1.1rem; color:#0369a1;">Mystery Picture</span>
+          <div class="suds-counter">
+            <span>🧼</span> <span id="suds-progress">0 / 12 washed</span>
+          </div>
+        </div>
+
+        <div id="suds-picture-container">
+          <div id="suds-picture"></div>
+          <div id="suds-grid"></div>
+        </div>
+
+        <div class="stage-hint" id="suds-hint">⌨️ Type the letter/number on each bubble or tap to scrub clean!</div>
+      </div>
+    </section>
+
+    <!-- GAME 4: CASTLE QUEST VIEWPORT -->
+    <section class="game-viewport" id="map-game">
+      <div class="game-top-bar">
+        <button class="btn-back" id="back-from-map">← Menu</button>
+        <div class="game-options">
+          <div class="character-picker" id="map-char-picker" title="Choose your character">
+            <button class="char-pick-btn active" data-char="🐰" title="Bunny">🐰</button>
+            <button class="char-pick-btn" data-char="🦊" title="Fox">🦊</button>
+            <button class="char-pick-btn" data-char="🦄" title="Unicorn">🦄</button>
+            <button class="char-pick-btn" data-char="👑" title="Knight">👑</button>
+          </div>
+          <div class="toggle-pills" title="Choose character types">
+            <button class="pill-btn active" id="map-toggle-upper" title="Uppercase (A-Z)">ABC</button>
+            <button class="pill-btn active" id="map-toggle-lower" title="Lowercase (a-z)">abc</button>
+            <button class="pill-btn" id="map-toggle-numbers" title="Numbers (0-9)">123</button>
+          </div>
+          <button class="pill-btn" id="map-new-btn">New Quest ➔</button>
+        </div>
+      </div>
+      <div id="map-stage">
+        <div class="quest-hud">
+          <span style="font-family:var(--font-display); color:#0f766e; font-size:1.1rem;">Reach the Castle! 🏰</span>
+          <div class="suds-counter" id="map-distance-badge">
+            <span>🚩</span> <span id="map-distance">Steps: 0</span>
+          </div>
+        </div>
+
+        <div id="quest-grid"></div>
+
+        <div class="stage-hint" id="map-hint">⌨️ Press any glowing adjacent letter/number to hop to it!</div>
+      </div>
+    </section>
+
+    <!-- GAME 5: CONNECT 4 (4 IN A ROW) VIEWPORT -->
+    <section class="game-viewport" id="connect-game">
+      <div class="game-top-bar">
+        <button class="btn-back" id="back-from-connect">← Menu</button>
+        <div class="game-options">
+          <div class="toggle-pills" title="Choose character types">
+            <button class="pill-btn active" id="connect-toggle-upper" title="Uppercase (A-Z)">ABC</button>
+            <button class="pill-btn active" id="connect-toggle-lower" title="Lowercase (a-z)">abc</button>
+            <button class="pill-btn" id="connect-toggle-numbers" title="Numbers (0-9)">123</button>
+          </div>
+          <button class="pill-btn" id="connect-restart-btn">Restart Game 🔄</button>
+        </div>
+      </div>
+      <div id="connect-stage">
+        <div class="connect-turn-bar">
+          <div class="turn-badge" id="connect-turn-badge">
+            <span id="turn-icon">🟡</span> <span id="turn-text" class="turn-p1">Player 1's Turn</span>
+          </div>
+          <div class="connect-scores">
+            <span class="score-pill score-p1-pill">🟡 P1: <b id="score-p1">0</b></span>
+            <span class="score-pill score-p2-pill">🔴 P2: <b id="score-p2">0</b></span>
+          </div>
+        </div>
+
+        <!-- 7 drop buttons directly aligned above the 7 columns -->
+        <div class="connect-drop-row" id="connect-drop-row"></div>
+
+        <!-- 7 cols x 6 rows board -->
+        <div class="connect-board" id="connect-board"></div>
+
+        <div class="stage-hint" id="connect-hint">⌨️ Press the letter above a column (or tap it) to drop your piece!</div>
+      </div>
+    </section>
+
+    <!-- Universal Celebration Banner -->
+    <div class="feedback-banner" id="feedback-banner">Awesome! ⭐</div>
+  </main>
+
+  <!-- Modular Scripts -->
+  <script src="js/sound.js"></script>
+  <script src="js/games/bubbles.js"></script>
+  <script src="js/games/math.js"></script>
+  <script src="js/games/suds.js"></script>
+  <script src="js/games/quest.js"></script>
+  <script src="js/games/connect.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
