@@ -16,15 +16,20 @@
   <link rel="stylesheet" href="css/phonics.css">
   <link rel="stylesheet" href="css/caterpillar.css">
   <link rel="stylesheet" href="css/sight.css">
+  <link rel="stylesheet" href="css/puzzles.css">
+  <link rel="stylesheet" href="css/sudoku.css">
 </head>
 <body>
 
   <!-- Top Header -->
   <header>
     <div class="brand" id="brand-home" title="Go to Home Menu">
-      <span>🎈</span> Kids Arcade
+      <span id="brand-icon">🎈</span> <span id="brand-text">Kids Arcade</span>
     </div>
     <div class="stats-bar">
+      <button class="btn-mode-switch" id="mode-toggle" title="Switch to Puzzle Games">
+        <span id="mode-icon">🧩</span> <span id="mode-label">Puzzles</span>
+      </button>
       <div class="star-badge" id="star-counter" title="Stars Collected">
         <span>⭐</span> <span id="star-count">0</span>
       </div>
@@ -328,6 +333,85 @@
       </div>
     </section>
 
+    <!-- ======================================================
+         PUZZLE ROOM (grown-up puzzles)
+         ====================================================== -->
+    <section id="puzzle-menu">
+      <h1 class="menu-title puzzle-title">Puzzle Room</h1>
+      <p class="menu-subtitle">One shared puzzle per day — race each other on the same board.</p>
+
+      <div class="game-cards puzzle-cards">
+        <div class="game-card card-sudoku" id="select-sudoku">
+          <div class="card-icon">🔢</div>
+          <h2 class="card-name">Daily Sudoku</h2>
+          <p class="card-desc" id="sudoku-card-desc">Today's puzzle</p>
+          <div class="sudoku-card-status" id="sudoku-card-status"></div>
+          <button class="btn-play btn-play-sudoku" id="sudoku-card-btn">Play Today's Puzzle</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUZZLE: DAILY SUDOKU VIEWPORT -->
+    <section class="game-viewport" id="sudoku-game">
+      <div class="game-top-bar sudoku-top-bar">
+        <button class="btn-back" id="back-from-sudoku">← Puzzles</button>
+        <div class="sudoku-date-nav">
+          <button class="sudoku-nav-btn" id="sudoku-prev-day" title="Previous day's puzzle">‹</button>
+          <div class="sudoku-date-label" id="sudoku-date-label">Today</div>
+          <button class="sudoku-nav-btn" id="sudoku-next-day" title="Next day's puzzle">›</button>
+        </div>
+        <span class="sudoku-diff-badge" id="sudoku-diff-badge">Easy</span>
+      </div>
+
+      <div class="sudoku-stage">
+        <div class="sudoku-status-row">
+          <div class="sudoku-timer" id="sudoku-timer">0:00</div>
+          <button class="sudoku-pause-btn" id="sudoku-pause-btn" title="Pause (P)">⏸</button>
+        </div>
+
+        <div class="sudoku-board-wrap" id="sudoku-board-wrap">
+          <div class="sudoku-board" id="sudoku-board"></div>
+
+          <div class="sudoku-overlay" id="sudoku-pause-overlay">
+            <div class="sudoku-overlay-card">
+              <div class="overlay-emoji">⏸</div>
+              <div class="overlay-title">Paused</div>
+              <button class="sudoku-primary-btn" id="sudoku-resume-btn">Resume ▶</button>
+            </div>
+          </div>
+
+          <div class="sudoku-overlay" id="sudoku-win-overlay">
+            <div class="sudoku-overlay-card">
+              <div class="overlay-emoji">🎉</div>
+              <div class="overlay-title">Solved!</div>
+              <div class="overlay-time" id="sudoku-win-time">0:00</div>
+              <div class="overlay-sub" id="sudoku-win-sub"></div>
+              <div class="overlay-actions">
+                <button class="sudoku-primary-btn" id="sudoku-share-btn">📋 Share Time</button>
+                <button class="sudoku-secondary-btn" id="sudoku-win-close">View Board</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sudoku-controls">
+          <button class="sudoku-ctrl-btn" id="sudoku-undo-btn" title="Undo (Ctrl+Z)"><span class="ctrl-icon">↶</span><span class="ctrl-label">Undo</span></button>
+          <button class="sudoku-ctrl-btn" id="sudoku-redo-btn" title="Redo (Ctrl+Y)"><span class="ctrl-icon">↷</span><span class="ctrl-label">Redo</span></button>
+          <button class="sudoku-ctrl-btn" id="sudoku-erase-btn" title="Erase (Backspace)"><span class="ctrl-icon">⌫</span><span class="ctrl-label">Erase</span></button>
+          <button class="sudoku-ctrl-btn" id="sudoku-notes-btn" title="Notes mode (N)"><span class="ctrl-icon">✏️</span><span class="ctrl-label">Notes <b class="ctrl-state">OFF</b></span></button>
+          <button class="sudoku-ctrl-btn" id="sudoku-autonotes-btn" title="Fill in all candidates"><span class="ctrl-icon">🪄</span><span class="ctrl-label">Auto Notes</span></button>
+          <button class="sudoku-ctrl-btn" id="sudoku-mistakes-btn" title="Highlight entries that don't match the solution"><span class="ctrl-icon">🔍</span><span class="ctrl-label">Mistakes <b class="ctrl-state">OFF</b></span></button>
+        </div>
+
+        <div class="sudoku-pad" id="sudoku-pad"></div>
+
+        <div class="sudoku-key-hint">
+          ⌨️ <b>1–9</b> enter · <b>Shift+1–9</b> note · <b>N</b> notes mode · <b>Arrows</b> move · <b>Backspace</b> erase · <b>Ctrl+Z / Ctrl+Y</b> undo/redo · <b>P</b> pause
+        </div>
+        <div class="sudoku-toast" id="sudoku-toast"></div>
+      </div>
+    </section>
+
     <!-- Universal Celebration Banner -->
     <div class="feedback-banner" id="feedback-banner">Awesome! ⭐</div>
   </main>
@@ -342,6 +426,8 @@
   <script src="js/games/phonics.js"></script>
   <script src="js/games/caterpillar.js"></script>
   <script src="js/games/sight.js"></script>
+  <script src="js/puzzles/sudoku-engine.js"></script>
+  <script src="js/puzzles/sudoku.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

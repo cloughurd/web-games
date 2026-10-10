@@ -23,36 +23,6 @@ const CATERPILLAR_WORDS = [
   { word: 'DUCK', emoji: '🦆', hint: 'Duck' }
 ];
 
-// Phonics sound representation for speech synthesis
-const PHONIC_SOUNDS = {
-  A: 'ah',
-  B: 'buh',
-  C: 'kuh',
-  D: 'duh',
-  E: 'eh',
-  F: 'fff',
-  G: 'guh',
-  H: 'huh',
-  I: 'ih',
-  J: 'juh',
-  K: 'kuh',
-  L: 'luh',
-  M: 'mmm',
-  N: 'nnn',
-  O: 'aw',
-  P: 'puh',
-  Q: 'kwuh',
-  R: 'ruh',
-  S: 'sss',
-  T: 'tuh',
-  U: 'uh',
-  V: 'vuh',
-  W: 'wuh',
-  X: 'ks',
-  Y: 'yuh',
-  Z: 'zzz'
-};
-
 const SEGMENT_COLORS = [
   '#f43f5e', // rose
   '#06b6d4', // cyan
@@ -255,9 +225,8 @@ const caterpillarGame = {
     const targetChar = this.currentWordObj.word[this.currentIndex];
 
     if (key.toUpperCase() === targetChar.toUpperCase()) {
-      // Speak the phonic sound instead of a bubble pop
-      const phonic = PHONIC_SOUNDS[targetChar.toUpperCase()] || targetChar.toLowerCase();
-      sound.speak(phonic, true);
+      // Say the letter name out loud
+      sound.speak(targetChar.toUpperCase(), true);
 
       const seg = this.trackEl.querySelector(`.caterpillar-segment[data-idx="${this.currentIndex}"]`);
       if (seg) {

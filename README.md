@@ -36,6 +36,20 @@ Playable on any modern computer, iPad, or tablet with zero setup or build tools 
 
 ---
 
+## 🧩 Puzzle Room (For Grown-Ups & Family Races)
+
+Click the **`🧩 Puzzles`** button in the header (or navigate directly to `#puzzles` / `#sudoku`) to enter the grown-up puzzle mode:
+
+- **🔢 Daily Sudoku:**
+  - One shared, deterministic puzzle per calendar day so two players can race on separate devices on the exact same board.
+  - Progressive weekday difficulty curve (Easy on Monday $\rightarrow$ Expert on Saturday).
+  - Built-in timer with pause support.
+  - On-screen touch keypad (digits disappear when all 9 are placed) + full keyboard support (1–9, arrows, backspace).
+  - Pencil notes mode (`N` or Shift+number) with auto-candidate cleanup across rows, columns, and 3x3 boxes when a number is placed.
+  - Auto-Notes generator, Undo/Redo (`Ctrl+Z` / `Ctrl+Y`), error/mistake highlighter, and a one-tap **Share Time** button to copy your race results!
+
+---
+
 ## 🔊 Sound System
 - **🎵 FX Only (Default):** Cute Web Audio-synthesized bubble pops, squeaks, boings, clinks, and fanfare chimes without robotic voice output.
 - **🔊 Voice & FX:** Speaks letter names and numbers aloud.
