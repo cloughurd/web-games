@@ -49,55 +49,88 @@
 /* Caterpillar Track */
 .caterpillar-track {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  gap: 6px;
   margin: 10px 0;
   position: relative;
-  min-height: 100px;
+  min-height: 125px;
+  padding: 10px 14px 16px;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
+/* Caterpillar Head */
 .caterpillar-head {
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #86efac 0%, #22c55e 100%);
-  border: 4px solid #16a34a;
-  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.3);
+  position: relative;
+  z-index: 20;
+  margin-right: -10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: relative;
+  justify-content: flex-end;
   user-select: none;
-  animation: headWiggle 1.8s infinite ease-in-out;
-  transition: transform 0.4s ease;
+  animation: caterpillarBob 2.2s infinite ease-in-out;
+  cursor: pointer;
+  transition: transform 0.25s ease;
 }
 
-@keyframes headWiggle {
-  0%, 100% { transform: rotate(-3deg); }
-  50% { transform: rotate(3deg); }
+.caterpillar-head:hover {
+  transform: scale(1.08) rotate(-2deg);
 }
 
-.caterpillar-antenna {
-  position: absolute;
-  top: -14px;
-  display: flex;
-  gap: 20px;
-  font-size: 1.2rem;
+.caterpillar-head-svg {
+  display: block;
+  width: 96px;
+  height: 105px;
+  overflow: visible;
+  filter: drop-shadow(0 6px 14px rgba(185, 28, 28, 0.28));
 }
 
-.caterpillar-face {
-  font-size: 1.8rem;
-  line-height: 1;
+/* Antenna sway animations */
+.cat-antenna-left {
+  transform-origin: 42px 42px;
+  animation: antennaWiggleLeft 2.4s ease-in-out infinite alternate;
 }
 
+.cat-antenna-right {
+  transform-origin: 68px 42px;
+  animation: antennaWiggleRight 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes antennaWiggleLeft {
+  0% { transform: rotate(-4deg); }
+  100% { transform: rotate(7deg); }
+}
+
+@keyframes antennaWiggleRight {
+  0% { transform: rotate(4deg); }
+  100% { transform: rotate(-7deg); }
+}
+
+@keyframes caterpillarBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Caterpillar Segments */
 .caterpillar-segment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  margin-left: -8px;
+  user-select: none;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.caterpillar-segment-circle {
   width: 72px;
   height: 72px;
   border-radius: 50%;
   background: white;
-  border: 3px dashed #86efac;
+  border: 3.5px dashed #86efac;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,35 +138,143 @@
   font-size: 2.5rem;
   color: #94a3b8;
   box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  position: relative;
   transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* Gloss highlight sheen on segments */
+.caterpillar-segment-circle::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 12px;
+  width: 20px;
+  height: 11px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  transform: rotate(-30deg);
+  pointer-events: none;
+}
+
 .caterpillar-segment.active-seg {
+  z-index: 15;
+}
+
+.caterpillar-segment.active-seg .caterpillar-segment-circle {
   border-color: #22c55e;
+  border-style: solid;
   background: #f0fdf4;
   color: #16a34a;
-  transform: scale(1.12);
-  box-shadow: 0 0 16px rgba(34, 197, 94, 0.4);
+  transform: scale(1.1);
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.45);
   animation: pulseSeg 1.4s infinite ease-in-out alternate;
 }
 
 @keyframes pulseSeg {
-  0% { transform: scale(1.08); }
-  100% { transform: scale(1.18); }
+  0% { transform: scale(1.06); }
+  100% { transform: scale(1.14); }
 }
 
-.caterpillar-segment.filled-seg {
-  border: 3px solid #16a34a;
+.caterpillar-segment.filled-seg .caterpillar-segment-circle {
+  border: 3.5px solid rgba(0, 0, 0, 0.12);
+  border-style: solid;
   color: white;
   transform: scale(1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  animation: segPopIn 0.35s ease-out;
+  box-shadow: 0 5px 14px rgba(0,0,0,0.15);
+  animation: segPopIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @keyframes segPopIn {
   0% { transform: scale(0.6); }
-  60% { transform: scale(1.25); }
+  60% { transform: scale(1.22); }
   100% { transform: scale(1); }
+}
+
+.caterpillar-segment.seg-wobble {
+  animation: segShake 0.3s ease-in-out;
+}
+
+@keyframes segShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* Feet Under Segments */
+.cat-segment-feet {
+  display: flex;
+  gap: 14px;
+  margin-top: -3px;
+  position: relative;
+  z-index: 2;
+}
+
+.cat-foot {
+  width: 10px;
+  height: 12px;
+  background: #831843;
+  border: 1.5px solid #500724;
+  border-radius: 6px;
+  display: block;
+  transform-origin: top center;
+}
+
+.caterpillar-track:hover .cat-foot-left {
+  animation: footTapL 0.6s infinite ease-in-out alternate;
+}
+
+.caterpillar-track:hover .cat-foot-right {
+  animation: footTapR 0.6s infinite ease-in-out alternate;
+}
+
+@keyframes footTapL {
+  0% { transform: rotate(-10deg); }
+  100% { transform: rotate(10deg); }
+}
+
+@keyframes footTapR {
+  0% { transform: rotate(10deg); }
+  100% { transform: rotate(-10deg); }
+}
+
+/* Cute Tail End */
+.caterpillar-tail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+  margin-left: -10px;
+  user-select: none;
+  animation: tailWag 2.2s infinite ease-in-out;
+}
+
+.cat-tail-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #86efac 0%, #22c55e 100%);
+  border: 3px solid #16a34a;
+  box-shadow: 0 4px 10px rgba(22, 163, 74, 0.2);
+  position: relative;
+  margin-bottom: 2px;
+}
+
+.cat-tail-circle::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  width: 12px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: rotate(-25deg);
+}
+
+@keyframes tailWag {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(6deg); }
 }
 
 /* Butterfly transformation */
@@ -142,7 +283,7 @@
   animation: butterflyFloat 1.2s forwards ease-out;
   position: absolute;
   pointer-events: none;
-  z-index: 10;
+  z-index: 30;
 }
 
 @keyframes butterflyFloat {
@@ -178,4 +319,27 @@
   transform: translateY(-3px) scale(1.08);
   background: #dcfce7;
   border-color: #22c55e;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  .caterpillar-head-svg {
+    width: 80px;
+    height: 88px;
+  }
+  .caterpillar-segment-circle {
+    width: 58px;
+    height: 58px;
+    font-size: 2rem;
+  }
+  .cat-tail-circle {
+    width: 36px;
+    height: 36px;
+  }
+  .caterpillar-segment {
+    margin-left: -6px;
+  }
+  .caterpillar-head {
+    margin-right: -8px;
+  }
 }
