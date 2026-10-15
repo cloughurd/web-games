@@ -238,9 +238,9 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// Kids Arcade is the default; #puzzles or #sudoku deep-links straight to the Puzzle Room
-if (location.hash === '#sudoku') {
-  switchView('sudoku');
-} else if (location.hash === '#puzzles') {
-  switchView('puzzles');
+// Deep-link directly to any game if specified in the URL hash (default is Kids Arcade menu)
+const initialHash = location.hash.replace('#', '');
+const validGames = ['bubbles', 'math', 'suds', 'map', 'connect', 'phonics', 'caterpillar', 'sight', 'puzzles', 'sudoku'];
+if (validGames.includes(initialHash)) {
+  switchView(initialHash);
 }

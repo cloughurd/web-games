@@ -25,8 +25,8 @@ Playable on any modern computer, iPad, or tablet with zero setup or build tools 
    - Letters control column drops, with letters dynamically rotating after each move.
    - Dynamic player-turn background shading (sunny yellow ↔ coral red) makes turns instantly clear at a glance.
 6. **🦁 Animal Phonics**
-   - Find the starting letter for friendly animals (🐶 Dog, 🦁 Lion, 🐻 Bear, 🐸 Frog, etc.).
-   - Spoken audio prompt + on-screen letter buttons and keyboard input.
+   - Find the starting letter for 68+ friendly animals covering all letters A–Z (🐶 Dog, 🐘 Elephant, 🐊 Alligator, 🦁 Lion, 🐻 Bear, 🐸 Frog, 🦘 Kangaroo, 🦒 Giraffe, 🐬 Dolphin, etc.).
+   - Spoken audio prompt + on-screen letter buttons and keyboard input with responsive single-line layout.
 7. **🐛 Spelling Caterpillar**
    - Spell simple 3-letter words (CAT, DOG, SUN, PIG, BUS, BUG, etc.) to grow the caterpillar.
    - Watch the caterpillar transform into a flying butterfly upon completion!
