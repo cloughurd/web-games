@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="css/phonics.css">
   <link rel="stylesheet" href="css/caterpillar.css">
   <link rel="stylesheet" href="css/sight.css">
+  <link rel="stylesheet" href="css/carver.css">
+  <link rel="stylesheet" href="css/treat.css">
   <link rel="stylesheet" href="css/puzzles.css">
   <link rel="stylesheet" href="css/sudoku.css">
 </head>
@@ -110,6 +112,22 @@
           <h2 class="card-name">Sight Words</h2>
           <p class="card-desc">Listen to the word spoken out loud, then click the matching card with your mouse!</p>
           <button class="btn-play btn-play-sight">Play Sight Words</button>
+        </div>
+
+        <!-- Card 9: Pumpkin Carver -->
+        <div class="game-card card-carver" id="select-carver">
+          <div class="card-icon">🎃</div>
+          <h2 class="card-name">Pumpkin Carver</h2>
+          <p class="card-desc">Press letters to carve dotted lines into a Jack-o'-Lantern, then light the glowing candle inside!</p>
+          <button class="btn-play btn-play-carver">Play Carver</button>
+        </div>
+
+        <!-- Card 10: Trick-or-Treat -->
+        <div class="game-card card-treat" id="select-treat">
+          <div class="card-icon">🍬</div>
+          <h2 class="card-name">Trick-or-Treat!</h2>
+          <p class="card-desc">Knock on the spooky door to meet friendly Halloween friends and collect treats in your candy bucket!</p>
+          <button class="btn-play btn-play-treat">Trick or Treat</button>
         </div>
       </div>
     </section>
@@ -333,6 +351,138 @@
       </div>
     </section>
 
+    <!-- GAME 9: PUMPKIN CARVER VIEWPORT -->
+    <section class="game-viewport" id="carver-game">
+      <div class="game-top-bar">
+        <button class="btn-back" id="back-from-carver">← Menu</button>
+        <div class="game-options">
+          <button class="pill-btn" id="carver-new-btn">New Pumpkin ➔</button>
+        </div>
+      </div>
+      <div id="carver-stage" class="candle-gold">
+        <div class="carver-header">
+          <div class="carver-title" id="carver-title">Carve: Classic Jack</div>
+          <div class="carver-subtitle" id="carver-subtitle">Press the letters inside the dotted lines to carve! 🎃</div>
+        </div>
+
+        <div class="carver-canvas-wrap">
+          <svg class="carver-svg" viewBox="0 0 400 360" aria-label="Pumpkin Canvas">
+            <defs>
+              <radialGradient id="pumpGradCenter" cx="50%" cy="45%" r="65%">
+                <stop offset="0%" stop-color="#fdba74"/>
+                <stop offset="60%" stop-color="#f97316"/>
+                <stop offset="100%" stop-color="#c2410c"/>
+              </radialGradient>
+              <radialGradient id="pumpGradInner" cx="45%" cy="45%" r="65%">
+                <stop offset="0%" stop-color="#fb923c"/>
+                <stop offset="65%" stop-color="#ea580c"/>
+                <stop offset="100%" stop-color="#9a3412"/>
+              </radialGradient>
+              <radialGradient id="pumpGradOuter" cx="40%" cy="45%" r="65%">
+                <stop offset="0%" stop-color="#f97316"/>
+                <stop offset="70%" stop-color="#c2410c"/>
+                <stop offset="100%" stop-color="#7c2d12"/>
+              </radialGradient>
+
+              <!-- Candle Glow Colors -->
+              <radialGradient id="candleGoldGrad" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="25%" stop-color="#fef08a"/>
+                <stop offset="70%" stop-color="#f59e0b"/>
+                <stop offset="100%" stop-color="#ea580c"/>
+              </radialGradient>
+              <radialGradient id="candlePurpleGrad" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="30%" stop-color="#f5d0fe"/>
+                <stop offset="70%" stop-color="#c084fc"/>
+                <stop offset="100%" stop-color="#7e22ce"/>
+              </radialGradient>
+              <radialGradient id="candleGreenGrad" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="30%" stop-color="#bbf7d0"/>
+                <stop offset="70%" stop-color="#4ade80"/>
+                <stop offset="100%" stop-color="#15803d"/>
+              </radialGradient>
+              <radialGradient id="candleCyanGrad" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="30%" stop-color="#bae6fd"/>
+                <stop offset="70%" stop-color="#38bdf8"/>
+                <stop offset="100%" stop-color="#0369a1"/>
+              </radialGradient>
+            </defs>
+
+            <!-- Shadow -->
+            <ellipse cx="200" cy="336" rx="145" ry="18" fill="rgba(0,0,0,0.3)"/>
+
+            <!-- Stem & Vine -->
+            <path d="M 188 95 C 182 55, 215 35, 226 18 C 232 9, 222 5, 212 12 C 196 26, 174 55, 178 98 Z" fill="#4d7c0f" stroke="#14532d" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M 222 25 C 245 15, 255 35, 248 48 C 240 60, 225 50, 235 40" fill="none" stroke="#65a30d" stroke-width="3" stroke-linecap="round"/>
+
+            <!-- Pumpkin Lobes -->
+            <ellipse cx="108" cy="216" rx="74" ry="104" fill="url(#pumpGradOuter)" stroke="#9a3412" stroke-width="2.5"/>
+            <ellipse cx="292" cy="216" rx="74" ry="104" fill="url(#pumpGradOuter)" stroke="#9a3412" stroke-width="2.5"/>
+            <ellipse cx="154" cy="216" rx="70" ry="116" fill="url(#pumpGradInner)" stroke="#9a3412" stroke-width="2.5"/>
+            <ellipse cx="246" cy="216" rx="70" ry="116" fill="url(#pumpGradInner)" stroke="#9a3412" stroke-width="2.5"/>
+            <ellipse cx="200" cy="216" rx="68" ry="120" fill="url(#pumpGradCenter)" stroke="#9a3412" stroke-width="2.5"/>
+            <ellipse cx="170" cy="120" rx="36" ry="14" fill="rgba(255,255,255,0.22)" transform="rotate(-15 170 120)"/>
+
+            <!-- Features injected here -->
+            <g id="carver-features-group"></g>
+          </svg>
+        </div>
+
+        <div class="carver-keypad" id="carver-keypad"></div>
+
+        <div class="carver-actions-bar" id="carver-actions-bar">
+          <button class="carver-theme-btn active" data-theme="candle-gold">🕯️ Gold</button>
+          <button class="carver-theme-btn" data-theme="candle-purple">🔮 Purple</button>
+          <button class="carver-theme-btn" data-theme="candle-green">🧪 Green</button>
+          <button class="carver-theme-btn" data-theme="candle-cyan">❄️ Blue</button>
+          <button class="carver-next-btn" id="carver-next-btn">Next Pumpkin ➔</button>
+        </div>
+
+        <div class="stage-hint">⌨️ Press each letter on the keyboard or tap the dotted shapes to carve!</div>
+      </div>
+    </section>
+
+    <!-- GAME 10: TRICK-OR-TREAT VIEWPORT -->
+    <section class="game-viewport" id="treat-game">
+      <div class="game-top-bar">
+        <button class="btn-back" id="back-from-treat">← Menu</button>
+        <div class="game-options">
+          <div class="treat-bucket" title="Candy Treats Collected">
+            <span>🎃</span> <span class="treat-counter" id="treat-candy-count">0</span>
+          </div>
+        </div>
+      </div>
+      <div id="treat-stage">
+        <div class="treat-header">
+          <div class="treat-title" id="treat-title">Knock on the Door! 🚪</div>
+          <div class="treat-subtitle" id="treat-subtitle">Press the letter on the knocker to knock!</div>
+        </div>
+
+        <div class="treat-porch-scene">
+          <div class="treat-door-frame">
+            <div class="treat-door-interior">
+              <div class="treat-visitor-emoji" id="treat-visitor-emoji">👻</div>
+              <div class="treat-item-card" id="treat-candy-card" title="Click to collect candy!">
+                <span class="treat-candy-emoji" id="treat-candy-emoji">🍬</span>
+                <span class="treat-target-badge" id="treat-target-badge">T</span>
+              </div>
+            </div>
+            <div class="treat-door-leaf" id="treat-door-leaf" title="Click to knock!">
+              <div class="treat-wreath">🎃</div>
+              <div class="treat-knocker-btn">
+                <span class="treat-knocker-letter" id="treat-knocker-letter">K</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage-hint">⌨️ Press the key on your keyboard or tap the knocker / candy!</div>
+      </div>
+    </section>
+
     <!-- ======================================================
          PUZZLE ROOM (grown-up puzzles)
          ====================================================== -->
@@ -426,6 +576,8 @@
   <script src="js/games/phonics.js"></script>
   <script src="js/games/caterpillar.js"></script>
   <script src="js/games/sight.js"></script>
+  <script src="js/games/carver.js"></script>
+  <script src="js/games/treat.js"></script>
   <script src="js/puzzles/sudoku-engine.js"></script>
   <script src="js/puzzles/sudoku.js"></script>
   <script src="js/app.js"></script>

@@ -249,6 +249,20 @@
       background: linear-gradient(180deg, #fff 0%, #eef2ff 100%);
     }
 
+    .card-carver {
+      border-color: #fdba74;
+    }
+    .card-carver:hover {
+      background: linear-gradient(180deg, #fff 0%, #fff7ed 100%);
+    }
+
+    .card-treat {
+      border-color: #d8b4fe;
+    }
+    .card-treat:hover {
+      background: linear-gradient(180deg, #fff 0%, #faf5ff 100%);
+    }
+
     .card-icon {
       font-size: 4rem;
       filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
@@ -313,6 +327,14 @@
 
     .btn-play-sight {
       background: linear-gradient(45deg, #6366f1, #38bdf8);
+    }
+
+    .btn-play-carver {
+      background: linear-gradient(45deg, #f97316, #ea580c);
+    }
+
+    .btn-play-treat {
+      background: linear-gradient(45deg, #9333ea, #c084fc);
     }
 
     /* Common Game Header & Controls */

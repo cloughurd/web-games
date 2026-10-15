@@ -22,6 +22,8 @@ const dom = {
   phonicsGame: document.getElementById('phonics-game'),
   caterpillarGame: document.getElementById('caterpillar-game'),
   sightGame: document.getElementById('sight-game'),
+  carverGame: document.getElementById('carver-game'),
+  treatGame: document.getElementById('treat-game'),
   puzzleMenu: document.getElementById('puzzle-menu'),
   sudokuGame: document.getElementById('sudoku-game'),
   modeToggle: document.getElementById('mode-toggle'),
@@ -70,6 +72,8 @@ function switchView(game) {
   phonicsGame.stop();
   caterpillarGame.stop();
   sightGame.stop();
+  carverGame.stop();
+  treatGame.stop();
   sudokuGame.stop();
 
   state.currentGame = game;
@@ -82,6 +86,8 @@ function switchView(game) {
   dom.phonicsGame.style.display = 'none';
   dom.caterpillarGame.style.display = 'none';
   dom.sightGame.style.display = 'none';
+  dom.carverGame.style.display = 'none';
+  dom.treatGame.style.display = 'none';
   dom.puzzleMenu.style.display = 'none';
   dom.sudokuGame.style.display = 'none';
 
@@ -111,6 +117,12 @@ function switchView(game) {
   } else if (game === 'sight') {
     dom.sightGame.style.display = 'flex';
     sightGame.start();
+  } else if (game === 'carver') {
+    dom.carverGame.style.display = 'flex';
+    carverGame.start();
+  } else if (game === 'treat') {
+    dom.treatGame.style.display = 'flex';
+    treatGame.start();
   } else if (game === 'puzzles') {
     dom.puzzleMenu.style.display = 'flex';
     renderPuzzleMenu();
@@ -194,6 +206,8 @@ document.getElementById('select-connect').addEventListener('click', () => switch
 document.getElementById('select-phonics').addEventListener('click', () => switchView('phonics'));
 document.getElementById('select-caterpillar').addEventListener('click', () => switchView('caterpillar'));
 document.getElementById('select-sight').addEventListener('click', () => switchView('sight'));
+document.getElementById('select-carver').addEventListener('click', () => switchView('carver'));
+document.getElementById('select-treat').addEventListener('click', () => switchView('treat'));
 
 document.getElementById('back-from-bubbles').addEventListener('click', () => switchView(null));
 document.getElementById('back-from-math').addEventListener('click', () => switchView(null));
@@ -203,6 +217,8 @@ document.getElementById('back-from-connect').addEventListener('click', () => swi
 document.getElementById('back-from-phonics').addEventListener('click', () => switchView(null));
 document.getElementById('back-from-caterpillar').addEventListener('click', () => switchView(null));
 document.getElementById('back-from-sight').addEventListener('click', () => switchView(null));
+document.getElementById('back-from-carver').addEventListener('click', () => switchView(null));
+document.getElementById('back-from-treat').addEventListener('click', () => switchView(null));
 dom.brandHome.addEventListener('click', () => switchView(isPuzzleView(state.currentGame) ? 'puzzles' : null));
 
 // Puzzle Room navigation
@@ -233,6 +249,10 @@ window.addEventListener('keydown', (e) => {
     phonicsGame.handleKeyPress(e.key);
   } else if (state.currentGame === 'caterpillar') {
     caterpillarGame.handleKeyPress(e.key);
+  } else if (state.currentGame === 'carver') {
+    carverGame.handleKeyPress(e.key);
+  } else if (state.currentGame === 'treat') {
+    treatGame.handleKeyPress(e.key);
   } else if (state.currentGame === 'sudoku') {
     sudokuGame.handleKeyDown(e);
   }
@@ -240,7 +260,7 @@ window.addEventListener('keydown', (e) => {
 
 // Deep-link directly to any game if specified in the URL hash (default is Kids Arcade menu)
 const initialHash = location.hash.replace('#', '');
-const validGames = ['bubbles', 'math', 'suds', 'map', 'connect', 'phonics', 'caterpillar', 'sight', 'puzzles', 'sudoku'];
+const validGames = ['bubbles', 'math', 'suds', 'map', 'connect', 'phonics', 'caterpillar', 'sight', 'carver', 'treat', 'puzzles', 'sudoku'];
 if (validGames.includes(initialHash)) {
   switchView(initialHash);
 }

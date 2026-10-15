@@ -33,6 +33,14 @@ Playable on any modern computer, iPad, or tablet with zero setup or build tools 
 8. **👀 Sight Words**
    - Listen to the word spoken aloud and click the matching card with the mouse.
    - Designed to practice mouse coordination, listening, and early word recognition.
+9. **🎃 Pumpkin Carver**
+   - Carve friendly jack-o'-lanterns! Dotted lines with letters in the center show where to cut eyes, nose, and mouth.
+   - Letters can be typed on the keyboard or clicked/tapped directly on the pumpkin or on-screen keypad.
+   - When finished, a warm candle lights up inside the jack-o'-lantern with selectable candle colors (Gold 🕯️, Purple 🔮, Green 🧪, Blue ❄️) and 5 face designs (Classic, Star Eyes, Kitty, Silly Monster, Vampire Jack)!
+10. **🍬 Trick-or-Treat!**
+    - Approach spooky Halloween porches! Press the letter on the door knocker to knock.
+    - Friendly Halloween visitors (Boo the Ghost, Skelly the Skeleton, Wendy the Witch, Pumpkin Pup, etc.) open the door and offer treats (Chocolates, Candy Corn, Donuts, Cookies) when you press the matching treat letter!
+    - Collect treats into your pumpkin bucket!
 
 ---
 
