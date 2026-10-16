@@ -12,10 +12,13 @@ const TREAT_CHARACTERS = [
   { name: 'Oliver the Owl', emoji: '🦉', greeting: 'Hoo hoo! Have a yummy treat!' }
 ];
 
+const CANDY_CORN_SVG = `<svg viewBox="0 0 36 36" width="36" height="36" style="display:inline-block; vertical-align:middle; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));"><defs><clipPath id="cc-shape"><path d="M 18 3 C 20 3 21.2 6 22.5 10 L 29 26.5 C 30.5 30 28.5 33 25 33 L 11 33 C 7.5 33 5.5 30 7 26.5 L 13.5 10 C 14.8 6 16 3 18 3 Z"/></clipPath></defs><g clip-path="url(#cc-shape)"><rect x="0" y="22" width="36" height="14" fill="#fbbf24"/><rect x="0" y="11" width="36" height="12" fill="#f97316"/><rect x="0" y="0" width="36" height="12" fill="#ffffff"/></g></svg>`;
+
 const TREAT_CANDIES = [
   { name: 'Chocolate Bar', emoji: '🍫' },
   { name: 'Swirly Lollipop', emoji: '🍭' },
-  { name: 'Candy Corn', emoji: '🍬' },
+  { name: 'Chewy Taffy', emoji: '🍬' },
+  { name: 'Candy Corn', emoji: '🌽', svg: CANDY_CORN_SVG },
   { name: 'Spooky Donut', emoji: '🍩' },
   { name: 'Monster Cupcake', emoji: '🧁' },
   { name: 'Bat Cookie', emoji: '🍪' }
@@ -103,7 +106,11 @@ const treatGame = {
     this.treatKey = this.getRandomLetter(this.knockKey);
 
     this.visitorEmojiEl.textContent = this.currentCharacter.emoji;
-    this.candyEmojiEl.textContent = this.currentCandy.emoji;
+    if (this.currentCandy.svg) {
+      this.candyEmojiEl.innerHTML = this.currentCandy.svg;
+    } else {
+      this.candyEmojiEl.textContent = this.currentCandy.emoji;
+    }
     this.targetBadgeEl.textContent = this.treatKey;
 
     this.titleEl.textContent = 'Trick or Treat! 🍬';

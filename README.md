@@ -39,7 +39,7 @@ Playable on any modern computer, iPad, or tablet with zero setup or build tools 
    - When finished, a warm candle lights up inside the jack-o'-lantern with selectable candle colors (Gold 🕯️, Purple 🔮, Green 🧪, Blue ❄️) and 5 face designs (Classic, Star Eyes, Kitty, Silly Monster, Vampire Jack)!
 10. **🍬 Trick-or-Treat!**
     - Approach spooky Halloween porches! Press the letter on the door knocker to knock.
-    - Friendly Halloween visitors (Boo the Ghost, Skelly the Skeleton, Wendy the Witch, Pumpkin Pup, etc.) open the door and offer treats (Chocolates, Candy Corn, Donuts, Cookies) when you press the matching treat letter!
+    - Friendly Halloween visitors (Boo the Ghost, Skelly the Skeleton, Wendy the Witch, Pumpkin Pup, etc.) open the door and offer treats (Chocolates, Lollipops, Chewy Taffy, Candy Corn, Donuts, Cupcakes, Bat Cookies) when you press the matching treat letter!
     - Collect treats into your pumpkin bucket!
 
 ---
